@@ -1,23 +1,28 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { DECREMENT, INCREMENT, INCREMENT_ASYNC } from '../_const/counter-const';
+import { useDispatch, useSelector } from 'react-redux';
+import * as actions from '../_store/_actions/counter-actions';
 
- const Counter = ({count, onIncrementAsync, onIncrement, onDecrement}) => {
+export const Counter = () => {
+
+  const incrementValue = 1;
+  const dispatch = useDispatch();
+  const count = useSelector((state) => state);
+
   return (
     <>
-    <div>
-      <button onClick={onIncrement}>INCREMENT</button>
-      <button onClick={onDecrement}>DECREMENT</button>
-      <button onClick={onIncrementAsync}>ASYNC</button>
-      <h1>{count}</h1>
-    </div>
+      <div>
+        <button
+          onClick={() => dispatch(actions.onIncrementAsync({ incrementValue }))}
+        >
+          INCREMENT
+        </button>
+        <button
+          onClick={() => dispatch(actions.onDecrementAsync({ incrementValue }))}
+        >
+          DECREMENT
+        </button>
+        <h1>{count}</h1>
+      </div>
     </>
-  )
-}
-
-const action = (type) => () => ({ type });
-export const Counters = connect((state) => ({ count: state }), {
-  onIncrement: action(INCREMENT),
-  onDecrement: action(DECREMENT),
-  onIncrementAsync: action(INCREMENT_ASYNC),
-})(Counter);
+  );
+};

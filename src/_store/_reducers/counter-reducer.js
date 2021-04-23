@@ -1,12 +1,12 @@
-import {INCREMENT,DECREMENT} from '../../_const/counter-const'
+import { INCREMENT, DECREMENT } from '../../_const/counter-const';
 
 export function reducer(state = 0, action) {
-  switch(action.type) {
+  switch (action.type) {
     case INCREMENT:
-      return state + 1;
+      return state + action.data;
     case DECREMENT:
-      return state - 1;
-    default: 
+      return state - action.data;
+    default:
       return state;
   }
 }
