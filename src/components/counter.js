@@ -1,6 +1,8 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as actions from '../_store/_actions/counter-actions';
+import Button from '@material-ui/core/Button';
+import './counter.css'
 
 export const Counter = () => {
 
@@ -9,20 +11,23 @@ export const Counter = () => {
   const count = useSelector((state) => state);
 
   return (
-    <>
+    <div className="container">
       <div>
-        <button
+        <Button variant="contained" color="primary" style={{margin: '30px'}}
           onClick={() => dispatch(actions.onIncrementAsync({ incrementValue }))}
         >
           INCREMENT
-        </button>
-        <button
+        </Button>
+        <Button variant="contained" color="primary" style={{margin: '30px'}}
           onClick={() => dispatch(actions.onDecrementAsync({ incrementValue }))}
         >
           DECREMENT
-        </button>
+        </Button>
+        </div>
+        <div>
+        <h1>Counter:</h1>
         <h1>{count}</h1>
       </div>
-    </>
+    </div>
   );
 };
