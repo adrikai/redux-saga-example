@@ -6,7 +6,7 @@ import {
   DECREMENT_ASYNC,
 } from '../../_const/counter-const';
 
-const newPromise = (incrementValue) => {
+const mockApiCall = (incrementValue) => {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(incrementValue);
@@ -15,7 +15,7 @@ const newPromise = (incrementValue) => {
 };
 
 function* incrementAsync({ incrementValue }) {
-  const data = yield call(newPromise, incrementValue);
+  const data = yield call(mockApiCall, incrementValue);
   yield put({
     type: INCREMENT,
     data,
@@ -23,7 +23,7 @@ function* incrementAsync({ incrementValue }) {
 }
 
 function* decrementAsync({ incrementValue }) {
-  const data = yield call(newPromise, incrementValue);
+  const data = yield call(mockApiCall, incrementValue);
   yield put({
     type: DECREMENT,
     data,
