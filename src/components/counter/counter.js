@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import * as actions from '../_store/_actions/counter-actions';
+import * as actions from '../../_store/_actions/counter-actions';
 import Button from '@material-ui/core/Button';
 import './counter.css'
 
